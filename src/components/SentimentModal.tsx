@@ -35,7 +35,8 @@ function GaugeChart({ value }: { value: number }) {
   // clamp fillAngle so the arc never disappears
   const fillAngle = 180 - Math.max(2, (value / 100) * 180);
   const fillEnd   = polarToXY(fillAngle, R);
-  const largeArc  = value > 50 ? 1 : 0;
+  // A semi-circle is exactly 180 degrees, so we NEVER need the large arc flag
+  const largeArc  = 0;
 
   const isCritical = value >= 70;
   const isModerate = value >= 40;
